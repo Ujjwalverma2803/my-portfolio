@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ElementType, ReactNode } from "react";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 type Direction = "TOP" | "LEFT" | "BOTTOM" | "RIGHT";
@@ -20,10 +20,9 @@ export function HoverBorderGradient<T extends ElementType = "button">({
   className,
   duration = 1,
   clockwise = true,
-  ...props
+  ...restProps // Renamed to avoid confusion with internal 'props'
 }: HoverBorderGradientProps<T>) {
   const Tag = as || "button";
-  const TagComponent = Tag as any; // <— suppresses the variance error
 
   const [hovered, setHovered] = useState(false);
   const [direction, setDirection] = useState<Direction>("TOP");
@@ -59,14 +58,14 @@ export function HoverBorderGradient<T extends ElementType = "button">({
   }, [hovered, duration, clockwise]);
 
   return (
-    <TagComponent
+    <Tag
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={cn(
         "relative flex rounded-full border content-center bg-black/20 hover:bg-black/10 transition duration-500 dark:bg-white/20 items-center flex-col flex-nowrap gap-10 h-min justify-center overflow-visible p-px decoration-clone w-fit",
         containerClassName
       )}
-      {...props}
+      {...(restProps as React.ComponentPropsWithoutRef<T>)}
     >
       <div
         className={cn(
@@ -93,6 +92,6 @@ export function HoverBorderGradient<T extends ElementType = "button">({
         transition={{ ease: "linear", duration }}
       />
       <div className="bg-black absolute z-1 flex-none inset-[2px] rounded-[100px]" />
-    </TagComponent>
+    </Tag>
   );
 }
