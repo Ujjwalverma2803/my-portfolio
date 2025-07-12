@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
+import { Group } from "three";
 import { useThree, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
@@ -12,7 +13,6 @@ declare module "@react-three/fiber" {
     };
   }
 }
-import { Group } from "three";
 
 extend({ ThreeGlobe: ThreeGlobe });
 
@@ -64,7 +64,7 @@ interface WorldProps {
 
 export function Globe({ globeConfig, data }: WorldProps) {
   const globeRef = useRef<ThreeGlobe | null>(null);
-const ref = useRef<Group | null>(null);
+  const ref = useRef<Group>(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
   const defaultProps = {
