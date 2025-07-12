@@ -229,6 +229,8 @@ export function Globe({ globeConfig, data }: WorldProps) {
       clearInterval(interval);
     };
   }, [isInitialized, data]);
+
+  return <group ref={ref} />;
 }
 
 export function WebGLRendererConfig() {
