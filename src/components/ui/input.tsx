@@ -17,7 +17,8 @@ const SmartInput = React.forwardRef<
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  function handleMouseMove({ currentTarget, clientX, clientY }: any) {
+  function handleMouseMove(event: React.MouseEvent<HTMLDivElement>) {
+    const { currentTarget, clientX, clientY } = event;
     const { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
@@ -62,6 +63,7 @@ const SmartInput = React.forwardRef<
     </motion.div>
   );
 });
+
 SmartInput.displayName = "SmartInput";
 
 export { SmartInput };

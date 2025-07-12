@@ -56,13 +56,12 @@ export const FloatingNav = ({
         transition={{
           duration: 0.2,
         }}
-className={cn(
-  'flex w-full max-w-lg mx-auto px-6 fixed top-10 inset-x-0 border border-transparent dark:border-white/[0.2] rounded-full bg-black dark:bg-black shadow-[...] z-[5000] py-2 items-center justify-evenly space-x-1',
-  className
-)}
-
+        className={cn(
+          "flex w-full max-w-lg mx-auto px-6 fixed top-10 inset-x-0 border border-transparent dark:border-white/[0.2] rounded-full bg-black dark:bg-black shadow-[...] z-[5000] py-2 items-center justify-evenly space-x-1",
+          className
+        )}
       >
-        {navItems.map((navItem: any, idx: number) => (
+        {navItems.map((navItem, idx) => (
           <a
             key={`link=${idx}`}
             href={navItem.link}
@@ -74,6 +73,7 @@ className={cn(
             <span className="hidden sm:block text-sm">{navItem.name}</span>
           </a>
         ))}
+
         {showLogin && (
           <button className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full">
             <span>Login</span>

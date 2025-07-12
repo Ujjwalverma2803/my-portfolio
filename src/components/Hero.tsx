@@ -25,7 +25,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.5 }}
           className="mt-6 text-lg md:text-2xl text-gray-700 dark:text-gray-300"
         >
-          Hi, I'm Ujjwal Verma, Software Developer based in India
+          Hi, I&apos;m Ujjwal Verma, Software Developer based in India
         </motion.p>
       </div>
     </BackgroundLines>
