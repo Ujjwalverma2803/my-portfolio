@@ -23,6 +23,7 @@ export function HoverBorderGradient<T extends ElementType = "button">({
   ...props
 }: HoverBorderGradientProps<T>) {
   const Tag = as || "button";
+  const TagComponent = Tag as any; // <— suppresses the variance error
 
   const [hovered, setHovered] = useState(false);
   const [direction, setDirection] = useState<Direction>("TOP");
@@ -58,7 +59,7 @@ export function HoverBorderGradient<T extends ElementType = "button">({
   }, [hovered, duration, clockwise]);
 
   return (
-    <Tag
+    <TagComponent
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={cn(
@@ -92,6 +93,6 @@ export function HoverBorderGradient<T extends ElementType = "button">({
         transition={{ ease: "linear", duration }}
       />
       <div className="bg-black absolute z-1 flex-none inset-[2px] rounded-[100px]" />
-    </Tag>
+    </TagComponent>
   );
 }
