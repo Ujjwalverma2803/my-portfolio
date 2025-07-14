@@ -18,34 +18,6 @@ import { MotionButton } from "@/components/ui/motion-button";   // ⬅️ new im
 /*                    --- simple gradient‑border button ---                   */
 /* -------------------------------------------------------------------------- */
 
-type SubmitButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
-
-const SubmitButton: React.FC<SubmitButtonProps> = ({
-  children,
-  className = "",
-  ...rest
-}) => (
-  <button
-    {...rest}
-    className={`group relative inline-flex items-center justify-center overflow-hidden rounded-full px-6 py-3 font-medium text-white focus:outline-none ${className}`}
-  >
-    {/* thin inner layer so gradient looks like a border */}
-    <span className="absolute inset-[2px] rounded-full bg-neutral-900" />
-
-    {/* animated halo shown only on hover/focus */}
-    <span
-      aria-hidden
-      className="absolute inset-0 rounded-full bg-gradient-to-br
-                 from-blue-500 via-cyan-400 to-sky-500
-                 opacity-0 transition-opacity duration-300
-                 group-hover:opacity-100 group-focus-visible:opacity-100"
-      style={{ filter: "blur(2px)" }}
-    />
-
-    {/* button label */}
-    <span className="relative z-10">{children}</span>
-  </button>
-);
 
 /* -------------------------------------------------------------------------- */
 /*                              --- Contact ---                               */
