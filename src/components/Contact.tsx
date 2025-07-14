@@ -1,9 +1,9 @@
 "use client";
+
 import React, { useRef } from "react";
 import emailjs from "emailjs-com";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { SmartInput } from "@/components/ui/input";
-import { HoverBorderGradient } from "./ui/hover-border-gradient";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -12,13 +12,50 @@ import {
   IconMail,
   IconBrandX,
 } from "@tabler/icons-react";
+import { MotionButton } from "@/components/ui/motion-button";   // ⬅️ new import
+
+/* -------------------------------------------------------------------------- */
+/*                    --- simple gradient‑border button ---                   */
+/* -------------------------------------------------------------------------- */
+
+type SubmitButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+const SubmitButton: React.FC<SubmitButtonProps> = ({
+  children,
+  className = "",
+  ...rest
+}) => (
+  <button
+    {...rest}
+    className={`group relative inline-flex items-center justify-center overflow-hidden rounded-full px-6 py-3 font-medium text-white focus:outline-none ${className}`}
+  >
+    {/* thin inner layer so gradient looks like a border */}
+    <span className="absolute inset-[2px] rounded-full bg-neutral-900" />
+
+    {/* animated halo shown only on hover/focus */}
+    <span
+      aria-hidden
+      className="absolute inset-0 rounded-full bg-gradient-to-br
+                 from-blue-500 via-cyan-400 to-sky-500
+                 opacity-0 transition-opacity duration-300
+                 group-hover:opacity-100 group-focus-visible:opacity-100"
+      style={{ filter: "blur(2px)" }}
+    />
+
+    {/* button label */}
+    <span className="relative z-10">{children}</span>
+  </button>
+);
+
+/* -------------------------------------------------------------------------- */
+/*                              --- Contact ---                               */
+/* -------------------------------------------------------------------------- */
 
 export default function Contact() {
-  const form = useRef(null);
+  const form = useRef<HTMLFormElement>(null);
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     emailjs
       .sendForm(
         "service_u1yccs9",
@@ -27,9 +64,7 @@ export default function Contact() {
         "eLriQrPSBKKgZJL8f"
       )
       .then(
-        () => {
-          alert("Message sent successfully!");
-        },
+        () => alert("Message sent successfully!"),
         (error) => {
           alert("Failed to send message. Please try again.");
           console.error(error);
@@ -117,7 +152,10 @@ export default function Contact() {
           />
         </div>
 
-        <HoverBorderGradient type="submit">Submit</HoverBorderGradient>
+        {/* ⬇️  just replace the old component with this one  */}
+        <MotionButton type="submit" duration={4000}>
+          Submit
+        </MotionButton>
       </form>
 
       <FloatingDock desktopClassName=" translate-y-10" items={links} />
