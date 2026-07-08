@@ -3,16 +3,20 @@ import React from "react";
 import { SparklesCore } from "./ui/sparkles";
 
 const skills = [
-  "/logos/react.png",
-  "/logos/Nodejs.png",
+  "/logos/Python.png",
+  "/logos/Flask.png",
+  "/logos/FastAPI.png",
+  "/logos/PostgreSQL.png",
+  "/logos/Redis.png",
+  "/logos/Docker.png",
+  "/logos/GCP.png",
+  "/logos/Next.jpeg",
+  "/logos/React.png",
+  "/logos/TypeScript.png",
   "/logos/Javascript.png",
   "/logos/Tailwind.png",
-  "/logos/Python.png",
-  "/logos/GCP.png",
-  "/logos/Redux.png",
-  "/logos/Next.jpeg",
-  "/logos/MongoDB.png",
-  // Add more paths as needed
+  "/logos/GitHub.png",
+  "/logos/Gemini.png",
 ];
 
 export default function Skills() {
@@ -46,13 +50,11 @@ export default function Skills() {
 
       {/* Sparkles Background */}
       <div className="w-[40rem] h-40 relative">
-        {/* Gradients */}
         <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
         <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
         <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
         <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
 
-        {/* Sparkles Effect */}
         <SparklesCore
           background="transparent"
           minSize={0.4}
@@ -62,7 +64,6 @@ export default function Skills() {
           particleColor="#FFFFFF"
         />
 
-        {/* Radial Gradient Mask */}
         <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
       </div>
     </div>

@@ -1,10 +1,18 @@
 "use client";
 import React from "react";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
-import { IconCode, IconHeart, IconRocket, IconMail } from "@tabler/icons-react";
+import {
+  IconCode,
+  IconBrain,
+  IconRocket,
+  IconMail,
+  IconServer,
+  IconDatabase,
+} from "@tabler/icons-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Copy, Check } from "lucide-react";import dynamic from "next/dynamic";
+import { Copy, Check } from "lucide-react";
+import dynamic from "next/dynamic";
 
 const World = dynamic(() => import("./ui/globe").then((m) => m.World), {
   ssr: false,
@@ -29,11 +37,13 @@ export default function About() {
     arcLength: 0.9,
     rings: 1,
     maxRings: 3,
-    initialPosition: { lat: 22.3193, lng: 114.1694 },
+    initialPosition: { lat: 17.385, lng: 78.4867 }, // Hyderabad
     autoRotate: true,
     autoRotateSpeed: 0.5,
   };
+
   const colors = ["#06b6d4", "#3b82f6", "#6366f1"];
+
   const EmailCard = () => {
     const [copied, setCopied] = useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
@@ -48,12 +58,15 @@ export default function About() {
 
     return (
       <div className="relative w-full">
-        <div className="text-lg font-semibold text-white mb-8">
-          Do you wanna connect?
-        </div>
+        <p className="text-lg font-semibold text-white mb-2">
+          Open to opportunities
+        </p>
+        <p className="text-sm text-gray-400 mb-6">
+          Targeting a backend engineering role in late 2026. Let us connect.
+        </p>
         <button
           onClick={handleCopy}
-          className="flex items-center gap-4 bg-indigo-950 hover:bg-indigo-900 text-white font-medium py-2 px-4 ml-10 rounded-lg transition duration-200 shadow-lg"
+          className="flex items-center gap-3 bg-indigo-700 hover:bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg transition duration-200 shadow-lg"
         >
           {copied ? <Check size={16} /> : <Copy size={16} />}
           {copied ? "Email Copied!" : "Copy my Email"}
@@ -100,396 +113,168 @@ export default function About() {
 
   const items = [
     {
-      title: "Creative Problem Solving",
+      title: "Backend Engineer",
       description:
-        "Approaching challenges with curiosity and structured thinking.",
-      icon: <IconHeart className="h-4 w-4 text-pink-500" />,
+        "1.5+ years building production-grade Python backend systems from scratch. Specialized in Flask, FastAPI, GraphQL APIs, JWT/RBAC authentication, and microservices architecture at a B2B SaaS startup.",
+      icon: <IconServer className="h-4 w-4 text-blue-400" />,
     },
     {
-      title: "Passionate Learner",
+      title: "AI & RAG Systems",
       description:
-        "Constantly exploring new technologies and applying them in real-world projects.",
-      icon: <IconHeart className="h-4 w-4 text-red-500" />,
+        "Hands-on experience building distributed RAG pipelines with vector databases (Qdrant), semantic caching with Redis, and LLM orchestration using the Gemini API.",
+      icon: <IconBrain className="h-4 w-4 text-purple-400" />,
     },
     {
-      title: "Project Execution",
+      title: "Database & Caching",
       description:
-        "From planning to deployment, ensuring successful project delivery.",
-      icon: <IconRocket className="h-4 w-4 text-green-500" />,
+        "Designed normalized PostgreSQL schemas, Firestore collections, and Redis caching strategies for high-frequency reads. Optimized query performance through indexing and efficient data modeling.",
+      icon: <IconDatabase className="h-4 w-4 text-green-400" />,
     },
     {
-      title: "Full-Stack Development",
+      title: "Shipped to Production",
       description:
-        "Building responsive and scalable web apps using React, Node.js, and MongoDB.",
-      icon: <IconCode className="h-4 w-4 text-blue-500" />,
+        "Deployed containerized microservices on GCP using Docker. Built and shipped 3 Flutter apps to Google Play Store and a live URL shortener with real-time analytics on Render.",
+      icon: <IconRocket className="h-4 w-4 text-orange-400" />,
     },
     {
-      title: <EmailCard />, // Button + confetti UI
+      title: "Strong Problem Solver",
+      description:
+        "500+ DSA problems solved across LeetCode and GFG. CodeChef 3★ rated. Finalist at Smart India Hackathon 2023. Graduate of IIITDM Kurnool (B.Tech CSE, 2025).",
+      icon: <IconCode className="h-4 w-4 text-yellow-400" />,
+    },
+    {
+      title: <EmailCard />,
       description: "",
-      icon: <IconMail className="h-4 w-4 text-indigo-500" />,
-      gradient: true,
+      icon: <IconMail className="h-4 w-4 text-indigo-400" />,
     },
   ];
+
   const sampleArcs = [
     {
       order: 1,
-      startLat: -19.885592,
-      startLng: -43.951191,
-      endLat: -22.9068,
-      endLng: -43.1729,
-      arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 1,
-      startLat: 28.6139,
-      startLng: 77.209,
-      endLat: 3.139,
-      endLng: 101.6869,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 1,
-      startLat: -19.885592,
-      startLng: -43.951191,
-      endLat: -1.303396,
-      endLng: 36.852443,
+      startLat: 17.385,
+      startLng: 78.4867,
+      endLat: 37.7749,
+      endLng: -122.4194,
       arcAlt: 0.5,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: colors[0],
     },
     {
       order: 2,
-      startLat: 1.3521,
-      startLng: 103.8198,
+      startLat: 17.385,
+      startLng: 78.4867,
+      endLat: 51.5072,
+      endLng: -0.1276,
+      arcAlt: 0.4,
+      color: colors[1],
+    },
+    {
+      order: 3,
+      startLat: 17.385,
+      startLng: 78.4867,
+      endLat: 1.3521,
+      endLng: 103.8198,
+      arcAlt: 0.3,
+      color: colors[2],
+    },
+    {
+      order: 4,
+      startLat: 17.385,
+      startLng: 78.4867,
       endLat: 35.6762,
       endLng: 139.6503,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      arcAlt: 0.4,
+      color: colors[0],
     },
     {
-      order: 2,
-      startLat: 51.5072,
-      startLng: -0.1276,
-      endLat: 3.139,
-      endLng: 101.6869,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 2,
-      startLat: -15.785493,
-      startLng: -47.909029,
-      endLat: 36.162809,
-      endLng: -115.119411,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 3,
-      startLat: -33.8688,
-      startLng: 151.2093,
-      endLat: 22.3193,
-      endLng: 114.1694,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 3,
-      startLat: 21.3099,
-      startLng: -157.8581,
-      endLat: 40.7128,
-      endLng: -74.006,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 3,
-      startLat: -6.2088,
-      startLng: 106.8456,
-      endLat: 51.5072,
-      endLng: -0.1276,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 4,
-      startLat: 11.986597,
-      startLng: 8.571831,
-      endLat: -15.595412,
-      endLng: -56.05918,
-      arcAlt: 0.5,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 4,
-      startLat: -34.6037,
-      startLng: -58.3816,
-      endLat: 22.3193,
-      endLng: 114.1694,
-      arcAlt: 0.7,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 4,
-      startLat: 51.5072,
-      startLng: -0.1276,
+      order: 5,
+      startLat: 17.385,
+      startLng: 78.4867,
       endLat: 48.8566,
-      endLng: -2.3522,
-      arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      endLng: 2.3522,
+      arcAlt: 0.4,
+      color: colors[1],
     },
     {
-      order: 5,
-      startLat: 14.5995,
-      startLng: 120.9842,
-      endLat: 51.5072,
-      endLng: -0.1276,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 5,
-      startLat: 1.3521,
-      startLng: 103.8198,
+      order: 6,
+      startLat: 17.385,
+      startLng: 78.4867,
       endLat: -33.8688,
       endLng: 151.2093,
+      arcAlt: 0.5,
+      color: colors[2],
+    },
+    {
+      order: 7,
+      startLat: 17.385,
+      startLng: 78.4867,
+      endLat: 40.7128,
+      endLng: -74.006,
+      arcAlt: 0.6,
+      color: colors[0],
+    },
+    {
+      order: 8,
+      startLat: 17.385,
+      startLng: 78.4867,
+      endLat: 25.2048,
+      endLng: 55.2708,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: colors[1],
     },
     {
-      order: 5,
-      startLat: 34.0522,
-      startLng: -118.2437,
-      endLat: 48.8566,
-      endLng: -2.3522,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 6,
-      startLat: -15.432563,
-      startLng: 28.315853,
-      endLat: 1.094136,
-      endLng: -63.34546,
-      arcAlt: 0.7,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 6,
-      startLat: 37.5665,
-      startLng: 126.978,
-      endLat: 35.6762,
-      endLng: 139.6503,
+      order: 9,
+      startLat: 28.6139,
+      startLng: 77.209,
+      endLat: 17.385,
+      endLng: 78.4867,
       arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: colors[2],
     },
     {
-      order: 6,
-      startLat: 22.3193,
-      startLng: 114.1694,
+      order: 10,
+      startLat: 19.076,
+      startLng: 72.8777,
+      endLat: 17.385,
+      endLng: 78.4867,
+      arcAlt: 0.1,
+      color: colors[0],
+    },
+    {
+      order: 11,
+      startLat: 12.9716,
+      startLng: 77.5946,
+      endLat: 17.385,
+      endLng: 78.4867,
+      arcAlt: 0.1,
+      color: colors[1],
+    },
+    {
+      order: 12,
+      startLat: 37.7749,
+      startLng: -122.4194,
       endLat: 51.5072,
       endLng: -0.1276,
       arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: colors[2],
     },
     {
-      order: 7,
-      startLat: -19.885592,
-      startLng: -43.951191,
-      endLat: -15.595412,
-      endLng: -56.05918,
-      arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 7,
-      startLat: 48.8566,
-      startLng: -2.3522,
-      endLat: 52.52,
-      endLng: 13.405,
-      arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 7,
-      startLat: 52.52,
-      startLng: 13.405,
-      endLat: 34.0522,
-      endLng: -118.2437,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 8,
-      startLat: -8.833221,
-      startLng: 13.264837,
-      endLat: -33.936138,
-      endLng: 18.436529,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 8,
-      startLat: 49.2827,
-      startLng: -123.1207,
-      endLat: 52.3676,
-      endLng: 4.9041,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 8,
-      startLat: 1.3521,
-      startLng: 103.8198,
-      endLat: 40.7128,
-      endLng: -74.006,
-      arcAlt: 0.5,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 9,
-      startLat: 51.5072,
-      startLng: -0.1276,
-      endLat: 34.0522,
-      endLng: -118.2437,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 9,
-      startLat: 22.3193,
-      startLng: 114.1694,
-      endLat: -22.9068,
-      endLng: -43.1729,
-      arcAlt: 0.7,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 9,
-      startLat: 1.3521,
-      startLng: 103.8198,
-      endLat: -34.6037,
-      endLng: -58.3816,
-      arcAlt: 0.5,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 10,
-      startLat: -22.9068,
-      startLng: -43.1729,
-      endLat: 28.6139,
-      endLng: 77.209,
-      arcAlt: 0.7,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 10,
-      startLat: 34.0522,
-      startLng: -118.2437,
-      endLat: 31.2304,
-      endLng: 121.4737,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 10,
-      startLat: -6.2088,
-      startLng: 106.8456,
-      endLat: 52.3676,
-      endLng: 4.9041,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 11,
-      startLat: 41.9028,
-      startLng: 12.4964,
-      endLat: 34.0522,
-      endLng: -118.2437,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 11,
-      startLat: -6.2088,
-      startLng: 106.8456,
-      endLat: 31.2304,
-      endLng: 121.4737,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 11,
-      startLat: 22.3193,
-      startLng: 114.1694,
+      order: 13,
+      startLat: 35.6762,
+      startLng: 139.6503,
       endLat: 1.3521,
       endLng: 103.8198,
       arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 12,
-      startLat: 34.0522,
-      startLng: -118.2437,
-      endLat: 37.7749,
-      endLng: -122.4194,
-      arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 12,
-      startLat: 35.6762,
-      startLng: 139.6503,
-      endLat: 22.3193,
-      endLng: 114.1694,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 12,
-      startLat: 22.3193,
-      startLng: 114.1694,
-      endLat: 34.0522,
-      endLng: -118.2437,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 13,
-      startLat: 52.52,
-      startLng: 13.405,
-      endLat: 22.3193,
-      endLng: 114.1694,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 13,
-      startLat: 11.986597,
-      startLng: 8.571831,
-      endLat: 35.6762,
-      endLng: 139.6503,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 13,
-      startLat: -22.9068,
-      startLng: -43.1729,
-      endLat: -34.6037,
-      endLng: -58.3816,
-      arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      color: colors[0],
     },
     {
       order: 14,
-      startLat: -33.936138,
-      startLng: 18.436529,
-      endLat: 21.395643,
-      endLng: 39.883798,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
+      startLat: 48.8566,
+      startLng: 2.3522,
+      endLat: 52.52,
+      endLng: 13.405,
+      arcAlt: 0.1,
+      color: colors[1],
     },
   ];
 
@@ -498,25 +283,24 @@ export default function About() {
       id="about"
       className="relative w-full min-h-screen bg-black py-20 overflow-hidden"
     >
-      <div className="absolute inset-1 z-1">
+      <div className="absolute inset-0 z-0">
         <World data={sampleArcs} globeConfig={globeConfig} />
       </div>
-      <div className="relative z-1 flex justify-center items-center px-6">
+
+      <div className="relative z-10 flex flex-col items-center px-6">
+        <h2 className="text-3xl font-bold text-white mb-12">About Me</h2>
         <BentoGrid className="max-w-6xl mx-auto md:auto-rows-[16rem]">
-          {items.map((item, i) => {
-            return (
-              <BentoGridItem
-                key={i}
-                title={item.title}
-                description={item.description}
-                icon={item.icon}
-                className="cursor-pointer backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl shadow-md transition-all duration-300 hover:scale-[1.02]"
-              />
-            );
-          })}
+          {items.map((item, i) => (
+            <BentoGridItem
+              key={i}
+              title={item.title}
+              description={item.description}
+              icon={item.icon}
+              className="cursor-pointer backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl shadow-md transition-all duration-300 hover:scale-[1.02]"
+            />
+          ))}
         </BentoGrid>
       </div>
     </div>
   );
-  
-} 
+}
