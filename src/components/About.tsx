@@ -3,11 +3,11 @@ import React from "react";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import {
   IconCode,
-  IconBrain,
   IconRocket,
   IconMail,
   IconServer,
   IconDatabase,
+  IconCloud,
 } from "@tabler/icons-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -37,7 +37,7 @@ export default function About() {
     arcLength: 0.9,
     rings: 1,
     maxRings: 3,
-    initialPosition: { lat: 17.385, lng: 78.4867 }, // Hyderabad
+    initialPosition: { lat: 17.385, lng: 78.4867 },
     autoRotate: true,
     autoRotateSpeed: 0.5,
   };
@@ -119,21 +119,21 @@ export default function About() {
       icon: <IconServer className="h-4 w-4 text-blue-400" />,
     },
     {
-      title: "AI & RAG Systems",
-      description:
-        "Hands-on experience building distributed RAG pipelines with vector databases (Qdrant), semantic caching with Redis, and LLM orchestration using the Gemini API.",
-      icon: <IconBrain className="h-4 w-4 text-purple-400" />,
-    },
-    {
       title: "Database & Caching",
       description:
         "Designed normalized PostgreSQL schemas, Firestore collections, and Redis caching strategies for high-frequency reads. Optimized query performance through indexing and efficient data modeling.",
       icon: <IconDatabase className="h-4 w-4 text-green-400" />,
     },
     {
+      title: "Cloud & DevOps",
+      description:
+        "Containerized microservices with Docker and deployed on GCP. Set up GitHub Actions CI/CD pipelines for automated deployments. Experienced with Render and Supabase for production hosting.",
+      icon: <IconCloud className="h-4 w-4 text-cyan-400" />,
+    },
+    {
       title: "Shipped to Production",
       description:
-        "Deployed containerized microservices on GCP using Docker. Built and shipped 3 Flutter apps to Google Play Store and a live URL shortener with real-time analytics on Render.",
+        "Deployed systems serving 1,000+ real users. Built a live URL shortener with microservices on Render and an AI proctoring platform on Vercel — both actively accessible.",
       icon: <IconRocket className="h-4 w-4 text-orange-400" />,
     },
     {
