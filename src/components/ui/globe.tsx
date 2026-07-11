@@ -20,6 +20,15 @@ const RING_PROPAGATION_SPEED = 3;
 const aspect = 1.2;
 const cameraZ = 300;
 
+const getSafeColor = (value: unknown, fallback: string) => {
+  if (typeof value === "string") {
+    const trimmed = value.trim();
+    return trimmed || fallback;
+  }
+
+  return fallback;
+};
+
 type Position = {
   order: number;
   startLat: number;
@@ -67,21 +76,29 @@ export function Globe({ globeConfig, data }: WorldProps) {
   const ref = useRef<Group>(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
+  const safeGlobeConfig = {
+    ...globeConfig,
+    globeColor: getSafeColor(globeConfig.globeColor, "#1d072e"),
+    emissive: getSafeColor(globeConfig.emissive, "#000000"),
+    polygonColor: getSafeColor(globeConfig.polygonColor, "rgba(255,255,255,0.7)"),
+    atmosphereColor: getSafeColor(globeConfig.atmosphereColor, "#ffffff"),
+    ambientLight: getSafeColor(globeConfig.ambientLight, "#ffffff"),
+    directionalLeftLight: getSafeColor(globeConfig.directionalLeftLight, "#ffffff"),
+    directionalTopLight: getSafeColor(globeConfig.directionalTopLight, "#ffffff"),
+    pointLight: getSafeColor(globeConfig.pointLight, "#ffffff"),
+  };
+
   const defaultProps = {
     pointSize: 1,
-    atmosphereColor: "#ffffff",
     showAtmosphere: true,
     atmosphereAltitude: 0.1,
-    polygonColor: "rgba(255,255,255,0.7)",
-    globeColor: "#1d072e",
-    emissive: "#000000",
     emissiveIntensity: 0.1,
     shininess: 0.9,
     arcTime: 2000,
     arcLength: 0.9,
     rings: 1,
     maxRings: 3,
-    ...globeConfig,
+    ...safeGlobeConfig,
   };
 
   // Initialize globe only once
@@ -103,10 +120,10 @@ export function Globe({ globeConfig, data }: WorldProps) {
       emissiveIntensity: number;
       shininess: number;
     };
-    globeMaterial.color = new Color(globeConfig.globeColor);
-    globeMaterial.emissive = new Color(globeConfig.emissive);
-    globeMaterial.emissiveIntensity = globeConfig.emissiveIntensity || 0.1;
-    globeMaterial.shininess = globeConfig.shininess || 0.9;
+    globeMaterial.color = new Color(defaultProps.globeColor);
+    globeMaterial.emissive = new Color(defaultProps.emissive);
+    globeMaterial.emissiveIntensity = defaultProps.emissiveIntensity || 0.1;
+    globeMaterial.shininess = defaultProps.shininess || 0.9;
   }, [
     isInitialized,
     globeConfig.globeColor,
@@ -164,7 +181,9 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .arcStartLng((d) => (d as { startLng: number }).startLng * 1)
       .arcEndLat((d) => (d as { endLat: number }).endLat * 1)
       .arcEndLng((d) => (d as { endLng: number }).endLng * 1)
-      .arcColor(defaultProps.polygonColor)
+      .arcColor((d: { color?: string }) =>
+        getSafeColor(d.color, defaultProps.polygonColor)
+      )
       .arcAltitude((e) => (e as { arcAlt: number }).arcAlt * 1)
       .arcStroke(() => [0.32, 0.28, 0.3][Math.round(Math.random() * 2)])
       .arcDashLength(defaultProps.arcLength)
@@ -174,7 +193,9 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
     globeRef.current
       .pointsData(filteredPoints)
-      .pointColor((e) => (e as { color: string }).color)
+      .pointColor((e) =>
+        getSafeColor((e as { color?: string }).color, defaultProps.polygonColor)
+      )
       .pointsMerge(true)
       .pointAltitude(0.0)
       .pointRadius(2);
