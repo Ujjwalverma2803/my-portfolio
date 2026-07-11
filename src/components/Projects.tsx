@@ -3,21 +3,28 @@ import { PinContainer } from "@/components/ui/3d-pin";
 
 export default function Projects() {
   const projects = [
-    {
-      title: "URL Shortener — Microservices",
-      desc: "Production-grade URL shortening service with FastAPI microservices, JWT auth, Redis caching, Base62 slug generation, tiered rate limiting, and real-time click analytics.",
-      link: "https://url-shortener-service-vend.onrender.com/docs",
-      emoji: "🔗",
-      tags: ["FastAPI", "PostgreSQL", "Redis", "Docker", "Render"],
-    },
-    {
-      title: "Interview Integrity Studio",
-      desc: "AI-based proctoring platform with client-side gaze tracking, audio monitoring, and object detection using TensorFlow.js — zero server-side video processing required.",
-      link: "https://interview-proctoring-flame.vercel.app/",
-      emoji: "👁️",
-      tags: ["Python", "Next.js", "PostgreSQL", "TensorFlow.js"],
-    },
-  ];
+  {
+    title: "URL Shortener — Microservices",
+    desc: "Production-grade URL shortening service with FastAPI microservices, JWT auth, Redis caching, Base62 slug generation, tiered rate limiting, and real-time click analytics.",
+    link: "https://url-shortener-service-vend.onrender.com/docs",
+    emoji: "🔗",
+    tags: ["FastAPI", "PostgreSQL", "Redis", "Docker", "Render"],
+  },
+  {
+    title: "Distributed Job Queue System",
+    desc: "Production-grade job queue with Bull and Node.js — priority queuing, exponential backoff retry, dead letter queue, tiered rate limiting, and full job lifecycle tracking.",
+    link: "https://job-queue-api-wuz7.onrender.com/health",
+    emoji: "⚙️",
+    tags: ["Node.js", "TypeScript", "Bull", "Redis", "PostgreSQL"],
+  },
+  {
+    title: "Interview Integrity Studio",
+    desc: "AI-based proctoring platform with client-side gaze tracking, audio monitoring, and object detection using TensorFlow.js — zero server-side video processing required.",
+    link: "https://interview-proctoring-flame.vercel.app/",
+    emoji: "👁️",
+    tags: ["Python", "Next.js", "PostgreSQL", "TensorFlow.js"],
+  },
+];
 
   return (
     <section
