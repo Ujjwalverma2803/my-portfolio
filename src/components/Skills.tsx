@@ -15,7 +15,7 @@ const skills = [
   "/logos/TypeScript.png",
   "/logos/Javascript.png",
   "/logos/Tailwind.png",
-  "/logos/GitHub.png",
+  "/logos/Github.png",
   "/logos/Gemini.png",
 ];
 
