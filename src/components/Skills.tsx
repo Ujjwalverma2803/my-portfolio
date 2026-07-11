@@ -11,7 +11,7 @@ const skills = [
   "/logos/Docker.png",
   "/logos/GCP.png",
   "/logos/Next.jpeg",
-  "/logos/React.png",
+  "/logos/Redux.png",
   "/logos/TypeScript.png",
   "/logos/Javascript.png",
   "/logos/Tailwind.png",
